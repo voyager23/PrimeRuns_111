@@ -32,16 +32,23 @@ def main(args):
 	pstrings = []
 	for i in plist:
 		pstrings.append( "".join(sorted("%s"%i)    ) )
-	for j in pstrings:
-		# Test for digit '3'
-		d = '3'
-		m = n-1
-		while m:
+	d = '7'
+	m = n-1
+	N = 0
+	while m:
+		for j in pstrings:
 			posn = j.find( d*m )
 			if posn != -1:
 				print(j)
-				break
+				N += 1
+				continue
+		if N == 0:
 			m -= 1
+			continue
+		else:
+			print(f"substring {d*m} count {N}")
+			exit(0)
+			
 if __name__ == '__main__':
     import sys
     sys.exit(main(sys.argv))
