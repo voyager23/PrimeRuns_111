@@ -5,7 +5,7 @@
 #  
 # Module primes file
 
-from sympy import sieve,prime
+from sympy import sieve,prime,isprime
 from functools import reduce
 
 # Grow the sieve to cover all primes <= n (a real number).
