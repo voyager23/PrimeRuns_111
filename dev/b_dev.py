@@ -29,7 +29,7 @@ def main(args):
 	# consider 4 digit primes
 	# use tuple to associate (prime,string)
 	digits = ('0','1','2','3','4','5','6','7','8','9')
-	n = 7
+	n = 4
 	
 	plist = sieve.primerange(10**(n-1),10**n)
 	pstrings = []

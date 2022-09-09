@@ -66,20 +66,32 @@ def prime_runs(drep, width):
 	# Construct a list of primes with runs of digits
 	# list  of variable numbers in tuples indexed by the rep digit 0-9	
 	n_var = (9,7,3,1)
-	for var_d in n_var:
-		s =  str(var_d) + str(drep)*(width-1)
-		n = int(s)
-		for x in range(width):
-			print(n,end=" ")
-			if Primes.isprime(n):
-				print("Prime")
-			else:
-				print("Comp")
-			n = rot_left(n,width)
-		print()
-			
+	for var_d in range(9,0,-1):
+		if var_d == drep: continue
+		if var_d < drep:	# Use 999[7,3,1] etc and rotate left
+			s =  str(drep)*(width-1) + str(var_d)
+			n = int(s)
+			for x in range(width):
+				if Primes.isprime(n):
+					print(f"Prime {n}")
+				else:
+					pass
+				n = rot_left(n,width)			
+		else:				# use [9,7]333 etc and rotate right
+			s =  str(var_d) + str(drep)*(width-1)
+			n = int(s)			
+			for x in range(width):
+				if Primes.isprime(n):
+					print(f"Prime {n}")
+				else:
+					pass
+				n = rot_right(n,width)
+	print()
+		
 def main(args):
-	prime_runs(9,4)
+	for n in range(0,10):
+		print(f"repeated digit {n}")
+		prime_runs(n,4)
 	
 if __name__ == '__main__':
     import sys
